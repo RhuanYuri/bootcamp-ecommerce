@@ -1,43 +1,30 @@
-import { AppWindowIcon, CodeIcon } from "lucide-react"
+import { Header } from "@/components/common/header";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
-import SignIn from "./_components/sign-in"
-import SignUp from "./_components/sign-up"
+import SignInForm from "./_components/sign-in";
+import SignUpForm from "./_components/sign-up";
 
-export default function Login() {
+const Authentication = async () => {
   return (
-    <div className="flex flex-col p-5 w-full min-h-screen bg-gray-50">
-       <Tabs defaultValue="sign-in">
-        <TabsList>
-          <TabsTrigger value="sign-in">Login</TabsTrigger>
-          <TabsTrigger value="sign-up">Cadastro</TabsTrigger>
-        </TabsList>
-        <TabsContent value="sign-in">
-          <SignIn />
-        </TabsContent>
-        <TabsContent value="sign-up">
-          <SignUp />
-        </TabsContent>
-      </Tabs>
-    </div>
-     
-  
-    
-  )
-}
+    <>
+      <Header />
+
+      <div className="flex w-full flex-col gap-6 p-5">
+        <Tabs defaultValue="sign-in">
+          <TabsList>
+            <TabsTrigger value="sign-in">Entrar</TabsTrigger>
+            <TabsTrigger value="sign-up">Criar conta</TabsTrigger>
+          </TabsList>
+          <TabsContent value="sign-in" className="w-full">
+            <SignInForm />
+          </TabsContent>
+          <TabsContent value="sign-up" className="w-full">
+            <SignUpForm />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </>
+  );
+};
+
+export default Authentication;
